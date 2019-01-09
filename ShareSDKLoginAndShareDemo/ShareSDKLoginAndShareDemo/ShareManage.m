@@ -11,9 +11,8 @@
 @implementation ShareManage
 //登录
 +(void)login:(SSDKPlatformType)platformType success:(loginBlock)block{
-    [ShareSDK getUserInfo:platformType
-           onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error){
-               block(state,user,error);
+    [ShareSDK authorize:SSDKPlatformTypeWechat settings:nil onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error) {
+        block(state,user,error);
     }];
 }
 //分享
